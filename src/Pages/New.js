@@ -1,3 +1,5 @@
-export default function New(params) {
-    
+export default function New() {
+    return (
+        <></>
+    )
 };

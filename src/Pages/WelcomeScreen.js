@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { defaultButtonColor, defaultTextColor, welcomeBackgrounColor } from "../Resources/DefaultColors";
+import { defaultBackgroundColor, defaultButtonColor, defaultInColor, defaultTextColor, welcomeBackgrounColor } from "../Resources/DefaultColors";
 import donttrusthumans from "../Resources/donttrusthumans.png";
 
 export default function WelcomeScreen() {
@@ -23,10 +23,16 @@ const WelcomeScreenContainer = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: ${welcomeBackgrounColor};
+  font-family: 'Open Sans', sans-serif;
 
   img {
-    width: 200px;
+    width: 180px;
     height: auto;
+    background-color: ${defaultButtonColor};
+    padding: 15px;
+    border-radius: 8px;
+    border: 3px solid ${defaultBackgroundColor};
+    box-shadow: 0px 0px 13px 2px ${defaultInColor};
   }
 
   div {
@@ -34,13 +40,9 @@ const WelcomeScreenContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 70px;
-    padding-top: 30px;
-    padding-bottom: 50px;
-    border-top: solid 10px ${defaultButtonColor};
-    background-color: ${defaultButtonColor};
+    margin-top: 40px;
     * {
-        font-size: 20px;
+        font-size: 18px;
         margin-top: 5px;
         text-decoration: none;
         color: ${defaultTextColor};

@@ -1,5 +1,10 @@
 import styled from "styled-components";
-import { defaultBackgroundColor, defaultButtonColor } from "./DefaultColors";
+import {
+  defaultBackgroundColor,
+  defaultButtonColor,
+  defaultTextColor,
+  welcomeBackgrounColor,
+} from "./DefaultColors";
 
 export const LoginContainer = styled.div`
   height: 100vh;
@@ -9,14 +14,18 @@ export const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${defaultBackgroundColor};
+  font-family: 'Open Sans', sans-serif;
   img {
     width: 150px;
     height: auto;
     margin-bottom: 10px;
   }
   h1 {
-    font-size: 60px;
+    font-family: 'Space Mono', monospace;
+    font-size: 50px;
+    font-weight: 700;
     margin-bottom: 10px;
+    color: ${defaultTextColor}
   }
   p {
     text-align: center;
@@ -34,6 +43,7 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: 'Open Sans', sans-serif;
   form {
     display: flex;
     flex-direction: column;
@@ -47,6 +57,13 @@ export const InputsContainer = styled.div`
     height: 50px;
     border: none;
     border-radius: 5px;
+    padding-left: 7px;
+    font-size: 16px;
+  }
+  input:focus {
+    outline: 3px solid ${welcomeBackgrounColor};
+    outline-offset: -4px;
+    color: ${defaultTextColor}
   }
 `;
 

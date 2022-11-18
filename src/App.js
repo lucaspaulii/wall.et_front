@@ -18,7 +18,7 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignInPage />} />
             <Route path="/main" element={<MainPage />} />
-            <Route path="/new/:inout" element={<New />} />
+            <Route path="new/:inout" element={<New />} />
           </Routes>
       </BrowserRouter>
     </>

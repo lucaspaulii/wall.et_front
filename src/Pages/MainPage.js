@@ -5,8 +5,10 @@ import {
 } from "../Resources/DefaultColors";
 import { MdOutlineExitToApp } from "react-icons/md";
 import { HiOutlinePlusCircle, HiOutlineMinusCircle } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
+  const navigate = useNavigate();
   return (
     <MainContainer>
       <Header>
@@ -15,11 +17,11 @@ export default function MainPage() {
       </Header>
       <Board></Board>
       <ButtonContainer>
-        <Button>
+        <Button onClick={() => navigate('/new/in')}>
           <HiOutlinePlusCircle />
           <p>Nova entrada</p>
         </Button>
-        <Button>
+        <Button onClick={() => navigate('/new/out')}>
           <HiOutlineMinusCircle />
           <p>Nova saída</p>
         </Button>
@@ -46,6 +48,7 @@ const Header = styled.div`
   font-size: 25px;
   color: #ffffff;
   font-family: "Open Sans", sans-serif;
+  font-weight: 600;
 `;
 const Board = styled.div`
   background-color: #ffffff;

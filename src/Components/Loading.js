@@ -22,8 +22,8 @@ const rotateAnimation = keyframes`
 `;
 
 const LoadingDiv = styled.div`
-  width: 100%;
-  height: 100vh;
+  width: auto;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,10 +34,10 @@ const LoadingDiv = styled.div`
 `;
 
 const LoadingImg = styled.img`
-  width: 30%;
-  height: auto;
+  width: auto;
+  height: 80%;
   animation-name: ${rotateAnimation};
-  animation-duration: 1s;
+  animation-duration: 0.7s;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 `;

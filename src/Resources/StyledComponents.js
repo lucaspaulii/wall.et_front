@@ -44,6 +44,7 @@ export const InputsContainer = styled.div`
   justify-content: center;
   align-items: center;
   font-family: 'Open Sans', sans-serif;
+  position: relative;
   form {
     display: flex;
     flex-direction: column;
@@ -65,6 +66,11 @@ export const InputsContainer = styled.div`
     outline-offset: -4px;
     color: ${defaultTextColor}
   }
+  p {
+    margin-top: 10px;
+    color: ${props => props.color};
+    font-weight: 600;
+  }
 `;
 
 export const InputButton = styled.button`
@@ -76,4 +82,8 @@ export const InputButton = styled.button`
   margin-top: 10px;
   font-size: 20px;
   color: #ffffff;
+  img {
+    height: 80%;
+    width: auto;
+  }
 `;

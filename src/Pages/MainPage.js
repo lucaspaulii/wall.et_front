@@ -30,6 +30,7 @@ export default function MainPage() {
 
   useEffect(() => {
     setIsLoading(true);
+    setErrorMessage(undefined);
     const URL = "https://wall-et-api.onrender.com/inflow";
     const promise = axios.get(URL, config);
     promise.then((res) => {

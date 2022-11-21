@@ -23,6 +23,7 @@ export default function New() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    setErrorMessage(undefined);
     setIsLoading(true);
     const padronizedValue = value.replaceAll(",", ".");
     const numberValue = Number(padronizedValue);

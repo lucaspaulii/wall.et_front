@@ -42,6 +42,7 @@ export default function SignInPage() {
     const promise = axios.post(URL, obj);
     promise.then((res) => {
       setIsLoading(false);
+      setErrorMessage(undefined);
       setSuccessMessage("Usuário criado!");
       setTimeout(() => {
         navigate("/login");

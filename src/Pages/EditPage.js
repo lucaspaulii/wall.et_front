@@ -20,7 +20,7 @@ export default function EditPage() {
   const paramsArr = idinout.split("$");
   const inout = paramsArr[1];
   const inflowId = paramsArr[0];
-  const [type, setType] = useState(inout)
+  const [type, setType] = useState(inout);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -42,6 +42,7 @@ export default function EditPage() {
     };
     const promise = axios.put(URL, obj, config);
     promise.then((res) => {
+      setErrorMessage(undefined);
       setSuccessMessage("Valor editado com sucesso!");
       setDescription(undefined);
       setValue(undefined);
@@ -83,25 +84,25 @@ export default function EditPage() {
             onChange={(e) => setDescription(e.target.value)}
           ></input>
           <td>
-          <input
-            id="entrada"
-            name="inout"
-            type="radio"
-            value="Entrada"
-            placeholder="Descriçao"
-            required
-            onChange={() => setType("in")}
-          ></input>
-          <label htmlFor="entrada">Entrada</label>
-          <input
-            id = "saída"
-            name="inout"
-            type="radio"
-            value="Saída"
-            placeholder="Descriçao"
-            required
-            onChange={() => setType("out")}
-          ></input>
+            <input
+              id="entrada"
+              name="inout"
+              type="radio"
+              value="Entrada"
+              placeholder="Descriçao"
+              required
+              onChange={() => setType("in")}
+            ></input>
+            <label htmlFor="entrada">Entrada</label>
+            <input
+              id="saída"
+              name="inout"
+              type="radio"
+              value="Saída"
+              placeholder="Descriçao"
+              required
+              onChange={() => setType("out")}
+            ></input>
           </td>
           <label htmlFor="saída">Saída</label>
           <InputButton

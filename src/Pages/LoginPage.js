@@ -28,6 +28,7 @@ export default function LoginPage() {
         password,
       };
       setIsLoading(true);
+      setErrorMessage(undefined);
       login(submitObject);
     }
   }

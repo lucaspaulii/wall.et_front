@@ -14,18 +14,18 @@ export const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   background-color: ${defaultBackgroundColor};
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   img {
     width: 150px;
     height: auto;
     margin-bottom: 10px;
   }
   h1 {
-    font-family: 'Space Mono', monospace;
+    font-family: "Space Mono", monospace;
     font-size: 50px;
     font-weight: 700;
     margin-bottom: 10px;
-    color: ${defaultTextColor}
+    color: ${defaultTextColor};
   }
   p {
     text-align: center;
@@ -43,7 +43,7 @@ export const InputsContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   position: relative;
   form {
     display: flex;
@@ -64,11 +64,35 @@ export const InputsContainer = styled.div`
   input:focus {
     outline: 3px solid ${welcomeBackgrounColor};
     outline-offset: -4px;
-    color: ${defaultTextColor}
+    color: ${defaultTextColor};
+  }
+  input[type="radio"] {
+    border: 0px;
+    height: 24px;
+    width: auto;
+  }
+  input[type='radio']:checked {
+    appearance: none;
+    background-color: ${welcomeBackgrounColor};
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    border: 2px solid #ffffff;
+  }
+  td {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  label {
+    color: #ffffff;
+    margin-top: 5px;
+    margin-bottom: 10px;
   }
   p {
     margin-top: 10px;
-    color: ${props => props.color};
+    color: ${(props) => props.color};
     font-weight: 600;
   }
 `;

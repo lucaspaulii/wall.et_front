@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components';
+import { defaultBackgroundColor } from './DefaultColors';
 
 const GlobalStyle = createGlobalStyle`
+body {
+	background-color: ${defaultBackgroundColor};
+}
 body {
     box-sizing: border-box;
 }

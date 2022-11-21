@@ -89,7 +89,7 @@ export default function SignInPage() {
           <InputButton>{isLoading ? <Loading /> : "Cadastrar"}</InputButton>
         </form>
       </InputsContainer>
-      <Link to={"/login"}>
+      <Link to={"/login"} style={{textDecoration: 'none'}}>
         <p>
           Já tem uma conta? <span>Entre agora!</span>
         </p>

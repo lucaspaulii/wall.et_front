@@ -1,18 +1,14 @@
-import { useNavigate, useParams } from "react-router-dom";
-import { InputButton, InputsContainer } from "../Resources/StyledComponents";
-import styled from "styled-components";
-import {
-  defaultBackgroundColor,
-  defaultInColor,
-  defaultOutColor,
-} from "../Resources/DefaultColors";
-import { useContext, useState } from "react";
-import { AuthContext } from "../Providers/auth";
 import axios from "axios";
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../Components/Loading";
+import { AuthContext } from "../Providers/auth";
+import { defaultInColor, defaultOutColor } from "../Resources/DefaultColors";
+import { InputButton, InputsContainer } from "../Resources/StyledComponents";
+import { Header, InOutContainer } from "./New";
 
-export default function New() {
-  const { inout } = useParams();
+export default function EditPage() {
+  const { idinout } = useParams();
   const [value, setValue] = useState(undefined);
   const [description, setDescription] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
@@ -20,6 +16,11 @@ export default function New() {
   const [successMessage, setSuccessMessage] = useState(undefined);
   const { userToken } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const paramsArr = idinout.split("$");
+  const inout = paramsArr[1];
+  const inflowId = paramsArr[0];
+  const [type, setType] = useState(inout)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -29,19 +30,19 @@ export default function New() {
     const submitObject = {
       value: numberValue,
       description,
-      type: inout,
+      type,
     };
-    postInflow(submitObject);
+    editInflow(submitObject);
   }
 
-  function postInflow(obj) {
-    const URL = "https://wall-et-api.onrender.com/inflow";
+  function editInflow(obj) {
+    const URL = `https://wall-et-api.onrender.com/inflow/${inflowId}`;
     const config = {
       headers: { Authorization: `Bearer ${userToken}` },
     };
-    const promise = axios.post(URL, obj, config);
+    const promise = axios.put(URL, obj, config);
     promise.then((res) => {
-      setSuccessMessage("Valor adicionado com sucesso!");
+      setSuccessMessage("Valor editado com sucesso!");
       setDescription(undefined);
       setValue(undefined);
       setTimeout(() => {
@@ -58,10 +59,15 @@ export default function New() {
     <InOutContainer>
       <Header>
         <h1>
-          Nova {inout === "in" ? "entrada" : inout === "out" ? "saída" : ""}
+          Editar {inout === "in" ? "entrada" : inout === "out" ? "saída" : ""}
         </h1>
       </Header>
-      <InputsContainer color={(errorMessage && defaultOutColor) || (successMessage && defaultInColor)}>
+      <InputsContainer
+        color={
+          (errorMessage && defaultOutColor) ||
+          (successMessage && defaultInColor)
+        }
+      >
         <form onSubmit={handleSubmit}>
           <input
             type="number"
@@ -76,12 +82,39 @@ export default function New() {
             required
             onChange={(e) => setDescription(e.target.value)}
           ></input>
+          <td>
+          <input
+            id="entrada"
+            name="inout"
+            type="radio"
+            value="Entrada"
+            placeholder="Descriçao"
+            required
+            onChange={() => setType("in")}
+          ></input>
+          <label htmlFor="entrada">Entrada</label>
+          <input
+            id = "saída"
+            name="inout"
+            type="radio"
+            value="Saída"
+            placeholder="Descriçao"
+            required
+            onChange={() => setType("out")}
+          ></input>
+          </td>
+          <label htmlFor="saída">Saída</label>
           <InputButton
             type="submit"
             disabled={value && description ? false : true}
           >
-          {isLoading ? <Loading></Loading> : (`Salvar ${inout === "in" ? "entrada" : inout === "out" ? "saída" : ""}`)}
-            
+            {isLoading ? (
+              <Loading></Loading>
+            ) : (
+              `Editar ${
+                inout === "in" ? "entrada" : inout === "out" ? "saída" : ""
+              }`
+            )}
           </InputButton>
         </form>
         {errorMessage && <p>{errorMessage}</p>}
@@ -90,23 +123,3 @@ export default function New() {
     </InOutContainer>
   );
 }
-
-export const InOutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  width: 100%;
-  background-color: ${defaultBackgroundColor};
-`;
-export const Header = styled.div`
-  height: 12vh;
-  display: flex;
-  width: 80%;
-  justify-content: flex-start;
-  align-items: center;
-  font-size: 25px;
-  font-weight: 600;
-  color: #ffffff;
-  font-family: "Open Sans", sans-serif;
-`;

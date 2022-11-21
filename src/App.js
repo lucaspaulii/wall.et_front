@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop";
+import EditPage from "./Pages/EditPage";
 import LoginPage from "./Pages/LoginPage";
 import MainPage from "./Pages/MainPage";
 import New from "./Pages/New";
@@ -19,6 +20,7 @@ function App() {
             <Route path="/signup" element={<SignInPage />} />
             <Route path="/main" element={<MainPage />} />
             <Route path="new/:inout" element={<New />} />
+            <Route path="edit/:idinout" element={<EditPage />} />
           </Routes>
       </BrowserRouter>
     </>
